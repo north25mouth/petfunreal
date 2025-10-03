@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ペット葬儀比較ナビ - 埼玉県のペット葬儀を最適なプランで</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pet-red': '#DC2626',
+                        'pet-light-red': '#FEE2E2',
+                        'pet-gray': '#6B7280',
+                        'pet-light-gray': '#F9FAFB'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        .progress-bar {
+            transition: width 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .question-container {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .choice-button {
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+        
+        .choice-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.2);
+        }
+        
+        .character-bubble {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- ヘッダー -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <img src="images/petfunerallogo.png" alt="ペット葬儀比較ナビ" class="h-10 w-auto mr-3">
+                    <h1 class="text-2xl font-bold text-pet-red">ペット葬儀比較ナビ</h1>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-pet-red transition-colors">特徴</a>
+                    <a href="#process" class="text-gray-600 hover:text-pet-red transition-colors">利用方法</a>
+                    <a href="#faq" class="text-gray-600 hover:text-pet-red transition-colors">よくある質問</a>
+                </nav>
+                <div class="md:hidden">
+                    <button class="text-gray-600 hover:text-pet-red">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="bg-gradient-to-br from-pet-light-gray to-white py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- 無料診断バナー -->
+            <div class="bg-gradient-to-r from-pet-light-red to-pink-50 rounded-lg p-4 mb-8 fade-in">
+                <p class="text-pet-red font-semibold text-lg">無料診断であなたに最適な葬儀社をご提案</p>
+            </div>
+            
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 fade-in">
+                埼玉県のペット葬儀を、<br class="md:hidden">あなたにぴったりのプランで
+            </h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto fade-in">
+                簡単な質問に答えるだけで、最適な葬儀社を無料でご提案します
+            </p>
+            <button onclick="startDiagnosis()" class="bg-pet-red hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all shadow-lg transform hover:scale-105 fade-in">
+                無料でおすすめを診断する
+            </button>
+        </div>
+    </section>
+
+    <!-- 質問フローセクション -->
+    <section id="diagnosis-section" class="py-16 bg-gray-50 hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 診断セクションの枠 -->
+            <div class="bg-white rounded-2xl shadow-xl border-2 border-pet-light-red p-8">
+                <!-- プログレスバー -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium text-pet-red" id="progress-text">質問 1/5</span>
+                        <span class="text-sm text-gray-500" id="progress-percent">20%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                        <div class="bg-gradient-to-r from-pet-red to-red-500 h-3 rounded-full progress-bar" id="progress-bar" style="width: 20%"></div>
+                    </div>
+                </div>
+
+                <!-- 質問コンテナ -->
+                <div class="question-container">
+                    <div class="w-full max-w-2xl mx-auto text-center">
+                        <!-- 質問アイコンとテキスト -->
+                        <div class="mb-8 fade-in">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-pet-red text-white rounded-full text-2xl font-bold mb-4">
+                                Q
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-bold text-gray-800" id="question-text">
+                                ペットの種類を教えてください
+                            </h3>
+                        </div>
+
+                        <!-- 選択肢 -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" id="choices-container">
+                            <button class="choice-button bg-white border-2 border-pet-red text-pet-red p-8 rounded-xl text-left hover:bg-pet-light-red" onclick="selectChoice('dog')">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <div class="font-bold text-lg">犬</div>
+                                        <div class="text-sm text-gray-600">犬の葬儀に対応</div>
+                                    </div>
+                                    <div class="text-pet-red">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </button>
+                            
+                            <button class="choice-button bg-white border-2 border-pet-red text-pet-red p-8 rounded-xl text-left hover:bg-pet-light-red" onclick="selectChoice('cat')">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <div class="font-bold text-lg">猫</div>
+                                        <div class="text-sm text-gray-600">猫の葬儀に対応</div>
+                                    </div>
+                                    <div class="text-pet-red">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- ナビゲーションボタン -->
+                        <div class="flex justify-start items-center">
+                            <button id="back-button" class="px-6 py-2 text-gray-500 hover:text-gray-700 transition-colors" onclick="previousQuestion()" style="display: none;">
+                                <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                                戻る
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- キャラクターと吹き出し -->
+            <div class="fixed bottom-8 right-8 hidden md:block">
+                <div class="bg-white rounded-lg shadow-lg p-4 max-w-xs character-bubble">
+                    <p class="text-sm text-gray-700">私たちがあなたに最適な「ペット葬儀社」を見つけます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- サービスの特徴 -->
+    <section id="features" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-12">サービスの特徴</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-pet-light-red w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-pet-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3">簡単診断</h4>
+                    <p class="text-gray-600">5つの簡単な質問に答えるだけで、あなたに最適な葬儀社をご提案します。</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-pet-light-red w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-pet-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3">地域特化</h4>
+                    <p class="text-gray-600">埼玉県内の信頼できる葬儀社のみを厳選してご紹介。地域密着で安心です。</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-pet-light-red w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-pet-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 11-9.75 9.75A9.75 9.75 0 0112 2.25z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3">安心サポート</h4>
+                    <p class="text-gray-600">利用は完全無料。葬儀社との連絡から契約まで、丁寧にサポートいたします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 利用の流れ -->
+    <section id="process" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-12">利用の流れ</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-pet-red text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3">質問に答える</h4>
+                    <p class="text-gray-600">ペットの種類や希望条件について、簡単な質問にお答えください。</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-pet-red text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3">おすすめ表示</h4>
+                    <p class="text-gray-600">あなたの条件に合った葬儀社を複数社ご提案いたします。</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-pet-red text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3">葬儀社と相談</h4>
+                    <p class="text-gray-600">お気に入りの葬儀社と直接連絡を取り、詳細を相談できます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-12">よくある質問</h3>
+            
+            <div class="space-y-6">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">利用は本当に無料ですか？</h4>
+                    <p class="text-gray-600">はい、完全無料です。診断から葬儀社のご紹介まで、一切費用はかかりません。</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">どの地域に対応していますか？</h4>
+                    <p class="text-gray-600">現在は埼玉県内の葬儀社のみをご紹介しています。今後他県への対応も予定しています。</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">どのようなペットに対応していますか？</h4>
+                    <p class="text-gray-600">犬、猫、うさぎ、ハムスターなど、様々なペットに対応した葬儀社をご紹介できます。</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">緊急時でも対応してもらえますか？</h4>
+                    <p class="text-gray-600">24時間対応の葬儀社もございます。緊急時でも迅速にご対応いたします。</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">葬儀社との契約はどうすればいいですか？</h4>
+                    <p class="text-gray-600">ご紹介した葬儀社と直接お話しいただき、条件や料金についてご相談ください。当サイトは仲介のみ行います。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">ペット葬儀比較ナビ</h4>
+                    <p class="text-gray-300">埼玉県のペット葬儀を、あなたにぴったりのプランでご提案します。</p>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4">サービス</h5>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#features" class="hover:text-white transition-colors">特徴</a></li>
+                        <li><a href="#process" class="hover:text-white transition-colors">利用方法</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">よくある質問</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4">運営者情報</h5>
+                    <div class="text-gray-300 space-y-1">
+                        <p>運営会社：ペット葬儀比較ナビ株式会社</p>
+                        <p>所在地：埼玉県さいたま市</p>
+                        <p>お問い合わせ：info@petfuneral-navi.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 ペット葬儀比較ナビ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 質問データ
+        const questions = [
+            {
+                question: "ペットの種類を教えてください",
+                choices: [
+                    { id: 'dog', text: '犬', description: '犬の葬儀に対応' },
+                    { id: 'cat', text: '猫', description: '猫の葬儀に対応' },
+                    { id: 'other', text: 'その他', description: '小鳥・昆虫など' }
+                ]
+            },
+            {
+                question: "ペットの体重を教えてください",
+                choices: [
+                    { id: 'small', text: '5kg未満', description: '小型ペット' },
+                    { id: 'medium', text: '5kg〜15kg', description: '中型ペット' },
+                    { id: 'large', text: '15kg〜25kg', description: '大型ペット' },
+                    { id: 'xlarge', text: '25kg以上', description: '超大型ペット' }
+                ]
+            },
+            {
+                question: "希望する時間帯を教えてください",
+                choices: [
+                    { id: 'urgent', text: '深夜・早朝', description: '緊急対応' },
+                    { id: 'today', text: '即日', description: '当日対応' },
+                    { id: 'later', text: '翌日以降', description: '予約対応' }
+                ]
+            },
+            {
+                question: "葬儀の形式を教えてください",
+                choices: [
+                    { id: 'individual', text: '個別火葬', description: 'おひとり様での火葬' },
+                    { id: 'group', text: '合同火葬', description: '複数ペットでの火葬' }
+                ]
+            },
+            {
+                question: "最も重視する点を教えてください",
+                choices: [
+                    { id: 'price', text: '価格', description: '費用を重視' },
+                    { id: 'distance', text: '距離', description: '近さを重視' },
+                    { id: 'reputation', text: '評判', description: '口コミを重視' }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let selectedAnswers = [];
+
+        // デモのおすすめ会社データ
+        const demoCompanies = [
+            {
+                id: 'company1',
+                name: '埼玉ペット葬儀センター',
+                rating: 4.8,
+                reviews: 156,
+                price: '15,000円〜',
+                distance: 'さいたま市から5km',
+                services: ['個別火葬', '合同火葬', '24時間対応', '立会い可能'],
+                description: '埼玉県内で最も多くの実績を持つ信頼のペット葬儀社です。',
+                phone: '048-123-4567',
+                address: '埼玉県さいたま市中央区',
+                specialties: ['犬', '猫', 'その他'],
+                highlights: ['手厚いケア', '経験豊富なスタッフ', 'アフターサポート完備']
+            },
+            {
+                id: 'company2',
+                name: 'アニマルメモリアル埼玉',
+                rating: 4.6,
+                reviews: 89,
+                price: '12,000円〜',
+                distance: '川越市から3km',
+                services: ['個別火葬', '合同火葬', '即日対応'],
+                description: 'ご家族の想いに寄り添う丁寧なサービスが自慢です。',
+                phone: '049-234-5678',
+                address: '埼玉県川越市',
+                specialties: ['犬', '猫'],
+                highlights: ['個別対応', 'カウンセリング', '遺品整理']
+            },
+            {
+                id: 'company3',
+                name: 'ハートフルペット葬儀社',
+                rating: 4.9,
+                reviews: 234,
+                price: '18,000円〜',
+                distance: '大宮市から2km',
+                services: ['個別火葬', '合同火葬', '24時間対応', '立会い可能', '法要'],
+                description: '最高の環境と設備でお別れをお手伝いします。',
+                phone: '048-345-6789',
+                address: '埼玉県大宮市',
+                specialties: ['犬', '猫', 'その他'],
+                highlights: ['充実の設備', '専門スタッフ', 'アフターフォロー']
+            },
+            {
+                id: 'company4',
+                name: 'ペットホスピタル埼玉',
+                rating: 4.4,
+                reviews: 67,
+                price: '10,000円〜',
+                distance: '熊谷市から8km',
+                services: ['個別火葬', '合同火葬'],
+                description: '親しみやすいスタッフとリーズナブルな料金設定。',
+                phone: '048-456-7890',
+                address: '埼玉県熊谷市',
+                specialties: ['犬', '猫'],
+                highlights: ['低価格', '親切対応', '地域密着']
+            },
+            {
+                id: 'company5',
+                name: 'サクラペット葬儀',
+                rating: 4.7,
+                reviews: 123,
+                price: '16,000円〜',
+                distance: '春日部市から4km',
+                services: ['個別火葬', '合同火葬', '深夜対応'],
+                description: '桜の下でお見送り。美しい環境でのお別れを提供します。',
+                phone: '048-567-8901',
+                address: '埼玉県春日部市',
+                specialties: ['犬', '猫'],
+                highlights: ['美しい環境', '立会い葬', '記念品作成']
+            }
+        ];
+
+        // 診断開始
+        function startDiagnosis() {
+            document.querySelector('section:nth-of-type(2)').classList.add('hidden');
+            document.getElementById('diagnosis-section').classList.remove('hidden');
+            document.getElementById('diagnosis-section').scrollIntoView({ behavior: 'smooth' });
+            showQuestion(0);
+        }
+
+        // 質問表示
+        function showQuestion(index) {
+            const question = questions[index];
+            const progress = ((index + 1) / questions.length) * 100;
+            
+            // プログレスバー更新
+            document.getElementById('progress-text').textContent = `質問 ${index + 1}/${questions.length}`;
+            document.getElementById('progress-percent').textContent = `${Math.round(progress)}%`;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            
+            // 質問テキスト更新
+            document.getElementById('question-text').textContent = question.question;
+            
+            // 選択肢更新
+            const choicesContainer = document.getElementById('choices-container');
+            choicesContainer.innerHTML = '';
+            
+            question.choices.forEach(choice => {
+                const button = document.createElement('button');
+                button.className = 'choice-button bg-white border-2 border-pet-red text-pet-red p-8 rounded-xl text-left hover:bg-pet-light-red fade-in';
+                button.onclick = () => selectChoice(choice.id);
+                
+                button.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="font-bold text-lg">${choice.text}</div>
+                            <div class="text-sm text-gray-600">${choice.description}</div>
+                        </div>
+                        <div class="text-pet-red">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                `;
+                
+                choicesContainer.appendChild(button);
+            });
+            
+            // ナビゲーションボタン表示制御
+            document.getElementById('back-button').style.display = index > 0 ? 'block' : 'none';
+        }
+
+        // 選択肢選択
+        function selectChoice(choiceId) {
+            selectedAnswers[currentQuestionIndex] = choiceId;
+            
+            // 選択されたボタンのスタイル変更
+            const buttons = document.querySelectorAll('.choice-button');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-pet-light-red', 'border-pet-red');
+                btn.classList.add('bg-gray-100', 'border-gray-300');
+            });
+            
+            event.target.closest('.choice-button').classList.remove('bg-gray-100', 'border-gray-300');
+            event.target.closest('.choice-button').classList.add('bg-pet-light-red', 'border-pet-red');
+            
+            // 自動で次の質問に進む
+            setTimeout(() => {
+                nextQuestion();
+            }, 500);
+        }
+
+        // 次の質問
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+            } else {
+                // 診断完了
+                showResults();
+            }
+        }
+
+        // 前の質問
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+                
+                // 前回の選択を復元
+                if (selectedAnswers[currentQuestionIndex]) {
+                    setTimeout(() => {
+                        const buttons = document.querySelectorAll('.choice-button');
+                        buttons.forEach(btn => {
+                            if (btn.onclick.toString().includes(selectedAnswers[currentQuestionIndex])) {
+                                btn.classList.remove('bg-gray-100', 'border-gray-300');
+                                btn.classList.add('bg-pet-light-red', 'border-pet-red');
+                            }
+                        });
+                    }, 100);
+                }
+            }
+        }
+
+        // 結果表示
+        function showResults() {
+            const resultsContainer = document.querySelector('.question-container');
+            resultsContainer.innerHTML = `
+                <div class="text-center fade-in">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-4">診断完了！</h3>
+                    <p class="text-lg text-gray-600 mb-8">あなたに最適なペット葬儀社をご提案いたします。</p>
+                    <button class="bg-pet-red hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all shadow-lg transform hover:scale-105" onclick="showCompanyResults()">
+                        結果を見る
+                    </button>
+                </div>
+            `;
+            
+            // プログレスバーを100%に
+            document.getElementById('progress-bar').style.width = '100%';
+            document.getElementById('progress-percent').textContent = '100%';
+        }
+
+        // おすすめ会社表示
+        function showCompanyResults() {
+            const section = document.getElementById('diagnosis-section');
+            section.innerHTML = `
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!-- 結果ヘッダー -->
+                    <div class="text-center mb-12 fade-in">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">おすすめのペット葬儀社</h2>
+                        <p class="text-lg text-gray-600">あなたの条件に合った埼玉県内の信頼できる葬儀社をご紹介します</p>
+                    </div>
+
+                    <!-- 会社カード一覧 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="company-cards">
+                        ${generateCompanyCards()}
+                    </div>
+
+                    <!-- 診断をもう一度 -->
+                    <div class="text-center mt-12">
+                        <button onclick="location.reload()" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                            診断をもう一度行う
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // アニメーション
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.company-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('fade-in');
+                    }, index * 200);
+                });
+            }, 100);
+        }
+
+        // 会社カード生成
+        function generateCompanyCards() {
+            let cardsHTML = '';
+            
+            demoCompanies.forEach((company, index) => {
+                const stars = generateStars(company.rating);
+                const servicesHTML = company.services.map(service => `<span class="bg-pet-light-red text-pet-red px-2 py-1 rounded-full text-xs">${service}</span>`).join(' ');
+                const highlightsHTML = company.highlights.map(highlight => `<li class="text-sm text-gray-600">• ${highlight}</li>`).join('');
+                
+                cardsHTML += `
+                    <div class="company-card bg-white rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all transform hover:-translate-y-2">
+                        <!-- 会社名とレーティング -->
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">${company.name}</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-yellow-400 mr-2">${stars}</div>
+                                <span class="text-sm text-gray-600">(${company.rating}/5.0) ${company.reviews}件のレビュー</span>
+                            </div>
+                        </div>
+
+                        <!-- 基本情報 -->
+                        <div class="mb-4 space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">料金</span>
+                                <span class="text-sm font-semibold text-pet-red">${company.price}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">距離</span>
+                                <span class="text-sm text-gray-600">${company.distance}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">電話</span>
+                                <span class="text-sm text-gray-600">${company.phone}</span>
+                            </div>
+                        </div>
+
+                        <!-- サービス -->
+                        <div class="mb-4">
+                            <h4 class="text-sm font-semibold text-gray-800 mb-2">対応サービス</h4>
+                            <div class="flex flex-wrap gap-1">
+                                ${servicesHTML}
+                            </div>
+                        </div>
+
+                        <!-- 特徴 -->
+                        <div class="mb-6">
+                            <h4 class="text-sm font-semibold text-gray-800 mb-2">おすすめポイント</h4>
+                            <ul class="text-xs text-gray-600">
+                                ${highlightsHTML}
+                            </ul>
+                        </div>
+
+                        <!-- 説明 -->
+                        <p class="text-sm text-gray-600 mb-6">${company.description}</p>
+
+                        <!-- アクションボタン -->
+                        <div class="flex space-x-2">
+                            <button class="flex-1 bg-pet-red hover:bg-red-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition-colors">
+                                詳細を見る
+                            </button>
+                            <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-lg text-sm transition-colors">
+                                電話する
+                            </button>
+                        </div>
+
+                        <!-- 住所 -->
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <p class="text-xs text-gray-500">${company.address}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            return cardsHTML;
+        }
+
+        // 星評価生成
+        function generateStars(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<svg class="w-4 h-4 fill-current text-yellow-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+            }
+            
+            const emptyStars = 5 - Math.ceil(rating);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<svg class="w-4 h-4 fill-current text-gray-300" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+            }
+            
+            return stars;
+        }
+
+        // ページ読み込み時のアニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
