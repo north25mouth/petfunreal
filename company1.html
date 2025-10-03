@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>埼玉ペット葬儀センター - ペット葬儀比較ナビ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pet-red': '#DC2626',
+                        'pet-light-red': '#FEE2E2',
+                        'pet-gray': '#6B7280',
+                        'pet-light-gray': '#F9FAFB'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- ヘッダー -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="images/petfunerallogo.png" alt="ペット葬儀比較ナビ" class="h-10 w-auto mr-3">
+                        <h1 class="text-2xl font-bold text-pet-red hover:text-red-700 transition-colors">ペット葬儀比較ナビ</h1>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html#features" class="text-gray-600 hover:text-pet-red transition-colors">特徴</a>
+                    <a href="index.html#process" class="text-gray-600 hover:text-pet-red transition-colors">利用方法</a>
+                    <a href="index.html#faq" class="text-gray-600 hover:text-pet-red transition-colors">よくある質問</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 企業紹介ヒーロー -->
+    <section class="bg-gradient-to-br from-pet-light-gray to-white py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">埼玉ペット葬儀センター</h1>
+                    <p class="text-xl text-gray-600 mb-6">自社火葬炉を持つ信頼のペット葬儀専門会社</p>
+                    <div class="bg-pet-light-red rounded-lg p-6 mb-8">
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <span class="font-semibold text-pet-red">所在地</span>
+                                <p class="text-gray-700">埼玉県さいたま市中央区</p>
+                            </div>
+                            <div>
+                                <span class="font-semibold text-pet-red">価格帯</span>
+                                <p class="text-gray-700">15,000円〜</p>
+                            </div>
+                            <div>
+                                <span class="font-semibold text-pet-red">24時間受付</span>
+                                <p class="text-gray-700">年中無休対応</p>
+                            </div>
+                            <div>
+                                <span class="font-semibold text-pet-red">自社火葬炉</span>
+                                <p class="text-gray-700">専用設備完備</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-200 rounded-lg p-8 text-center">
+                    <img src="images/istockphoto-2228706717-612x612.jpg" 
+                         alt="埼玉ペット葬儀センター" 
+                         class="w-full h-64 object-cover rounded-lg shadow-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 会社概要 -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">会社概要</h2>
+            <div class="prose max-w-none">
+                <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    埼玉ペット葬儀センターは、埼玉県内で20年以上にわたりペット葬儀サービスを提供している信頼の専門会社です。
+                    私たちが実際にお話を伺った際、代表者の方から「ペットは家族の一員。その最後の瞬間を大切に送っていただきたい」
+                    という想いを強く感じました。
+                </p>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    自社で火葬炉を所有し、24時間365日体制でのサポートを行っているため、
+                    突然のお別れの時でも安心してご相談いただけます。設備の充実度とスタッフの対応力は、
+                    他社と比較しても群を抜いていると確信しています。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- サービス内容 -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">サービス内容</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <div class="bg-pet-light-red w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-pet-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">個別火葬</h3>
+                    <p class="text-gray-600">おひとり様での丁寧な火葬。ご家族の立会いも可能で、最後のお別れを大切に執り行います。</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <div class="bg-pet-light-red w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-pet-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">合同葬</h3>
+                    <p class="text-gray-600">複数のペットと一緒に火葬。リーズナブルな価格で大切なお別れをサポートいたします。</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <div class="bg-pet-light-red w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-pet-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">24時間対応</h3>
+                    <p class="text-gray-600">年中無休で24時間受付。突然のお別れの時でも、いつでもご連絡ください。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 強み（面談で得られた情報） -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">私たちが確認した信頼性</h2>
+            <div class="space-y-8">
+                <div class="bg-pet-light-red rounded-lg p-8">
+                    <h3 class="text-xl font-bold text-pet-red mb-4">✓ 自社火葬炉による品質管理</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        面談で実際に火葬炉を見学させていただきましたが、最新の設備と清潔な環境に驚きました。
+                        外注に頼らず自社で完結しているため、品質の一貫性と安全性が保証されています。
+                        代表者の方も「設備投資は惜しまない」とおっしゃっており、その姿勢に感銘を受けました。
+                    </p>
+                </div>
+                <div class="bg-pet-light-red rounded-lg p-8">
+                    <h3 class="text-xl font-bold text-pet-red mb-4">✓ 経験豊富なスタッフの対応力</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        実際にお話を伺ったスタッフの方は、20年以上の経験をお持ちで、
+                        様々な状況に対応できる知識と技術を持っていらっしゃいました。
+                        「どんな状況でも、ご家族の気持ちを最優先に考えて対応します」
+                        という言葉が印象的で、信頼できると感じました。
+                    </p>
+                </div>
+                <div class="bg-pet-light-red rounded-lg p-8">
+                    <h3 class="text-xl font-bold text-pet-red mb-4">✓ 透明性の高い料金体系</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        料金について詳しく説明していただきましたが、追加料金の発生が少なく、
+                        最初に提示された金額でほぼ完結することが分かりました。
+                        「ご家族に安心していただくため、隠れた費用は一切ありません」
+                        という方針に共感し、信頼できる会社だと判断しました。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- どんな人におすすめか -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">こんな方におすすめ</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">🏠 立会い葬をご希望の方</h3>
+                    <p class="text-gray-600">自社設備のため、ご家族が火葬に立ち会える環境が整っています。</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">⏰ 24時間対応が必要な方</h3>
+                    <p class="text-gray-600">深夜や早朝でも対応可能で、突然のお別れでも安心です。</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">💰 透明性の高い料金を求める方</h3>
+                    <p class="text-gray-600">追加料金が少なく、最初の見積もりでほぼ完結します。</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">🎯 品質にこだわる方</h3>
+                    <p class="text-gray-600">最新設備と清潔な環境で、大切なお別れを執り行えます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 運営者コメント -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">ペット葬儀比較ナビからのコメント</h2>
+            <div class="bg-gradient-to-r from-pet-light-red to-pink-50 rounded-lg p-8">
+                <div class="flex items-start space-x-4">
+                    <div class="bg-pet-red text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-lg font-bold">比</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">実際にお話を伺った印象</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            私たちが直接面談させていただいた際、代表者の方の「ペットは家族」という想いが
+                            言葉の端々から伝わってきました。設備の見学では、清潔感と最新性に驚き、
+                            スタッフの方々の対応も非常に丁寧でした。
+                        </p>
+                        <p class="text-gray-700 leading-relaxed">
+                            特に印象的だったのは、24時間365日対応の体制を整えている理由を
+                            「ペットの最期は予測できないからこそ、いつでも対応できる環境が必要」
+                            とおっしゃっていたことです。この姿勢に、真摯にペット葬儀と向き合っている
+                            会社だと確信しました。ご家族の大切なペットをお任せできる
+                            信頼できる会社として自信を持ってご紹介いたします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="py-16 bg-pet-red">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-8">お問い合わせ・ご相談</h2>
+            <p class="text-white text-lg mb-8">
+                24時間365日、いつでもご相談を受け付けております。<br>
+                突然のお別れでも、お気軽にお電話ください。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:048-123-4567" class="bg-white text-pet-red font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-colors">
+                    📞 048-123-4567
+                </a>
+                <a href="index.html" class="border-2 border-white text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-pet-red transition-colors">
+                    他の会社も見る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">ペット葬儀比較ナビ</h4>
+                    <p class="text-gray-300">埼玉県のペット葬儀を、あなたにぴったりのプランでご提案します。</p>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">サービス</h5>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="index.html#features" class="hover:text-white transition-colors">特徴</a></li>
+                        <li><a href="index.html#process" class="hover:text-white transition-colors">利用方法</a></li>
+                        <li><a href="index.html#faq" class="hover:text-white transition-colors">よくある質問</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">運営者情報</h5>
+                    <div class="text-gray-300 space-y-1">
+                        <p>運営会社：ペット葬儀比較ナビ株式会社</p>
+                        <p>所在地：埼玉県さいたま市</p>
+                        <p>お問い合わせ：info@petfuneral-navi.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 ペット葬儀比較ナビ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
